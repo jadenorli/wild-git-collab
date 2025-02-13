@@ -52,6 +52,22 @@ ideal_diamonds
 ### to plot, summarize, calculate something simple using the diamonds
 ### dataset.
 
+#load the necessary libraries
+library(ggplot2)
+library(dplyr)
+
+
+#create a summary of the price by carat for each cut
+diamonds_summary <- diamonds %>% 
+  group_by(cut) %>% 
+  summarise(carat_m = mean(carat),
+            price_m = mean(price))
+
+#create a ggplot
+carat_price_new <- ggplot(diamonds_summary, aes(x = carat_m, y = price_m)) +
+  geom_point(aes(x = carat_m, y = price_m, color = cut)) 
+
+carat_price_new
 
 ```
 
