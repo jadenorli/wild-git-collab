@@ -7,6 +7,9 @@ execute:
   warning: false
   message: false
 ---
+```{r}
+print("version control is cool")
+```
 
 
 ## STEP 5: No merge conflicts!
