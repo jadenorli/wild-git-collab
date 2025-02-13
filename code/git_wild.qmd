@@ -38,6 +38,10 @@ price_carat_plot
 ### size greater than 1 carat or cut is "Ideal"
 
 
+library(ggplot2)
+data(diamonds)
+ideal_diamonds <- subset(diamonds, cut == "Ideal")
+ideal_diamonds
 
 ```
 
