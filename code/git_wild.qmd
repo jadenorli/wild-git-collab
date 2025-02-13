@@ -16,6 +16,19 @@ execute:
 ### ggplot2 package) and create a plot of price vs. carat (or some other
 ### variables of your choice)
 
+#load the necessary libraries
+library(ggplot2)
+
+#define the diamonds data from the ggplot2 package
+diamonds <- diamonds
+
+#create a plot to visualize price vs. carat
+price_carat_plot <- ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(x = carat, y = price, color = cut)) +
+  geom_smooth()
+
+#view the plot
+price_carat_plot
 
 ```
 
