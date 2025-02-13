@@ -54,6 +54,7 @@ ideal_diamonds
 numeric_features <- ideal_diamonds[sapply(ideal_diamonds, is.numeric)]
 cor_matrix <- cor(numeric_features, use = "complete.obs")
 
+
 # Convert the correlation matrix to a long format for ggplot2
 cor_data <- as.data.frame(as.table(cor_matrix))
 
@@ -65,6 +66,24 @@ ggplot(cor_data, aes(Var1, Var2, fill = Freq)) +
   labs(title = "Correlation Heatmap of Diamond Data", x = "", y = "") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+
+#load the necessary libraries
+library(ggplot2)
+library(dplyr)
+
+
+#create a summary of the price by carat for each cut
+diamonds_summary <- diamonds %>% 
+  group_by(cut) %>% 
+  summarise(carat_m = mean(carat),
+            price_m = mean(price))
+
+#create a ggplot
+carat_price_new <- ggplot(diamonds_summary, aes(x = carat_m, y = price_m)) +
+  geom_point(aes(x = carat_m, y = price_m, color = cut)) 
+
+carat_price_new
+
 
 ```
 
