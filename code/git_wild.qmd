@@ -51,7 +51,20 @@ ideal_diamonds
 ### Both partners - delete this comment, then write some code here
 ### to plot, summarize, calculate something simple using the diamonds
 ### dataset.
+numeric_features <- ideal_diamonds[sapply(ideal_diamonds, is.numeric)]
+cor_matrix <- cor(numeric_features, use = "complete.obs")
 
+# Convert the correlation matrix to a long format for ggplot2
+cor_data <- as.data.frame(as.table(cor_matrix))
+
+# Create the heatmap
+ggplot(cor_data, aes(Var1, Var2, fill = Freq)) +
+  geom_tile(color = "white") +  # Add gridlines
+  scale_fill_gradient2(low = "lightblue", high = "salmon", mid = "white", midpoint = 0, 
+                       limit = c(-1, 1), space = "Lab", name = "Correlation") +
+  labs(title = "Correlation Heatmap of Diamond Data", x = "", y = "") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
 
 ```
 
