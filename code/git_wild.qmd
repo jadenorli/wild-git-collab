@@ -27,8 +27,10 @@ print("version control is cool")
 ### ggplot2 package) and create a subset based on filtering, e.g., 
 ### size greater than 1 carat or cut is "Ideal"
 
-
-
+library(ggplot2)
+data(diamonds)
+ideal_diamonds <- subset(diamonds, cut == "Ideal")
+ideal_diamonds
 ```
 
 ## STEP 7: Uh oh, merge conflicts!
